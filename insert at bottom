@@ -1,0 +1,48 @@
+# Python3 program for the above approach
+	
+# Recursive function to use implicit stack
+# to insert an element at the bottom of stack
+def recur(S, N):
+	
+	# If stack is empty
+	if (len(S) == 0):
+		S.append(N)
+	
+	else:
+		
+		# Stores the top element by popping
+		X = S.pop()
+		# Recurse with remaining elements
+		S = recur(S, N)
+		
+		# Push the previous
+		# top element again
+		S.append(X)
+	
+	return S
+
+# Function to insert an element
+# at the bottom of stack
+def insertToBottom(S, N):
+	
+	# Recursively insert
+	# N at the bottom of S
+	S = recur(S, N)
+	
+	# Print the stack S
+	while (len(S) > 0):
+		print(S.pop(), end = " ")
+
+# Driver code
+
+# Input
+S = []
+S.append(5)
+S.append(4)
+S.append(3)
+S.append(2)
+S.append(1)
+
+N = 7
+
+insertToBottom(S, N)
